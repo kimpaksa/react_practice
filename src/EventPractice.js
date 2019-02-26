@@ -2,7 +2,29 @@ import React, { Component } from 'react';
 
 class EventPractice extends Component {
     state = {
+        username: '',
         message:''
+    }
+
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    handleClick = () => {
+        alert(this.state.username + ' : ' + this.state.message);
+        this.setState({
+            message:'',
+            username:''
+        });
+    }
+
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter' ) {
+            this.handleClick();
+        }
     }
 
 
@@ -14,25 +36,21 @@ class EventPractice extends Component {
                 <input 
                     type="text" 
                     name="message" 
-                    placeholder="아무거나입력해주세오." 
+                    placeholder="Message" 
                     value={this.state.message} 
-                    onChange={
-                        (e) => {
-                            this.setState({
-                                message: e.target.value    
-                            })
-                            //console.log(e.target.value);
-                        }
-                    }
+                    onChange={this.handleChange}
                 />
 
+                <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="User Name" 
+                    value={this.state.username} 
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleKeyPress}
+                />
                 <button 
-                    onClick={()=>{
-                        alert(this.state.message);
-                        this.setState({
-                            message:''
-                        });
-                    }}
+                    onClick={this.handleClick}
                 >확인</button>
             </div>
         );
