@@ -13,14 +13,8 @@ class App extends Component {
         <button onClick={() => this.ScrollBox.scrollToBottom()}>
         맨 밑으로</button>
       </div>
-      
-
     );
   }
-  
-
-
-
 }
 
 //<MyComponent name="Kim Sang Woo" age={33}/>
